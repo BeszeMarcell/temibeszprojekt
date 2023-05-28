@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display a map</title>
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/latest/maptiler-sdk.umd.min.js"></script>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/latest/maptiler-sdk.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .informacioPanel {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: #f1f1f1;
+            transition: left 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-y: auto; /* Add scrollbar for vertical overflow */
+        scrollbar-width: thin; /* Customize the scrollbar width */
+        scrollbar-color: #888888 #f1f1f1; /* Customize the scrollbar colors */
+    }
+
+
+        .uzletNev {
+    background-color: #514f4a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 70px;
+    height: 100px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* Increase the z-index value */
+    margin-top: -50px;
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.egyedi-img {
+  height: 48px;
+  width: 48px;
+}
+
+
+.informacioPanel img {
+    display: block;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 1; /* Decrease the z-index value */
+}
+        .panelContent {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0px;
+        }
+
+
+
+        .panelContent p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+p{
+    font-size: 20px;
+}
+
+
+
+
+
+
+</style>
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+        <div id="informacioPanel1" class="informacioPanel">
+          <img src="https://photos.plugshare.com/photos/655035.jpg" alt="Kép">
+          <div class="uzletNev">
+            Penny Magyarország
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+            <span class="material-symbols-outlined">
+              near_me
+            </span>
+            <p style="font-size: large;">&nbspKeszthely, Frech Miklós utca 1, 8360<br>&nbspMagyarország</p>
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+            <span class="material-symbols-outlined">
+              payments
+            </span>
+            <p style="font-size: large;">&nbspNyitvatartási időben egyelőre ingyenes</p>
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+            <span class="material-symbols-outlined">
+              schedule
+            </span>
+            <p style="font-size: large;">&nbspHétfő-Péntek 7:00-24:00</p>
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; margin-bottom: 40px;" class="panelContent">
+            <span class="material-symbols-outlined">
+              info
+            </span>
+            <p style="font-size: large;">&nbspPolyfazer app szükséges</p>
+
+
+        
+        </div>
+
+
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+
+            <p style="font-size: large;">Csatlakozók (1 típus)</p>
+          </div> 
+        
+          <div style="border: solid lightgray 1px; padding: 10px;" class="panelContent">
+
+            <span>
+                <div><img class="egyedi-img" src="https://assets.plugshare.com/outlets/images/type2.png" ></div>
+
+            
+            </span>
+
+            <div style="padding: 10px
+            ;" class="plug-name ng-binding"><b>Type 2</b></div>
+          
+          <span style="padding: 10px; font-size: .7em;
+          position: relative;
+          margin-left: 7px;
+          bottom: -1px;
+          color: #fff;
+          background-color: #567abb;
+          padding: 1px 5px 2px;
+          border-radius: 3px;" class="plug-name ng-binding">4 Csatlakozó</span>
+            <span style="padding: 10px; font-size: .7em;
+            position: relative;
+            margin-left: 7px;
+            bottom: -1px;
+            color: black;
+            background-color: yellow;
+            padding: 1px 5px 2px;
+            border-radius: 3px;" class="plug-name ng-binding">22 kW</span>
+
+          </div> 
+      </div>
+    
+  </div>
+
+
+    <div id="informacioPanel2" class="informacioPanel">
+        <img src="https://photos.plugshare.com/photos/580825.jpg" alt="Kép">
+          <div class="uzletNev">
+            Belváros Parkolóház - Parkl töltő
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+            <span class="material-symbols-outlined">
+              near_me
+            </span>
+            <p style="font-size: large;">&nbspSzékesfehérvár, Távirda u. 3,8000<br>&nbspMagyarország</p>
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+            <span class="material-symbols-outlined">
+              payments
+            </span>
+            <p style="font-size: large;">&nbspFizetés szükséges<br>
+                149 Ft/kWh</p>
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+            <span class="material-symbols-outlined">
+              schedule
+            </span>
+            <p style="font-size: large;">&nbspHétfő-Péntek 7:00-24:00</p>
+          </div>
+          <div style="border: solid lightgray 1px; padding: 10px; margin-bottom: 40px;" class="panelContent">
+            <span class="material-symbols-outlined">
+              info
+            </span>
+            <p style="font-size: large;">&nbspA töltőpontok a parkolóház földszintjén találhatóak.
+            <br>
+                Parkl applikáció szükséges a töltéshez.<br>
+                Csatlakoztasd a töltő kábelt az autódhoz, majd egy szabad töltő aljzatához.
+                Kattints a TÖLTÉS INDÍTÁSA opcióra.<br>
+                Kattints a kiválasztott töltő és aljzat azonosítójára és a töltés már indul is.<br>
+                A töltés leállításához először kattints a töltés részleteire, majd a TÖLTÉS LEÁLLÍTÁSA opcióra.<br>
+                Leállítás után húzd ki a kábelt töltő aljzatából és az autóból.
+                <br>
+                A töltés díja 149 Ft/kWh.</p>
+
+
+        
+        </div>
+
+
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+
+            <p style="font-size: large;">Csatlakozók (1 típus)</p>
+          </div> 
+        
+          <div style="border: solid lightgray 1px; padding: 10px;" class="panelContent">
+
+            <span>
+                <div><img class="egyedi-img" src="https://assets.plugshare.com/outlets/images/type2.png" ></div>
+
+            
+            </span>
+
+            <div style="padding: 10px
+            ;" class="plug-name ng-binding"><b>Type 2</b></div>
+          
+          <span style="padding: 10px; font-size: .7em;
+          position: relative;
+          margin-left: 7px;
+          bottom: -1px;
+          color: #fff;
+          background-color: #567abb;
+          padding: 1px 5px 2px;
+          border-radius: 3px;" class="plug-name ng-binding">4 Csatlakozó</span>
+            <span style="padding: 10px; font-size: .7em;
+            position: relative;
+            margin-left: 7px;
+            bottom: -1px;
+            color: black;
+            background-color: yellow;
+            padding: 1px 5px 2px;
+            border-radius: 3px;" class="plug-name ng-binding">22 kW</span>
+
+          </div> 
+      </div>
+    
+  </div>
+
+    <div id="informacioPanel3" class="informacioPanel">
+        <img src="https://photos.plugshare.com/photos/464525.jpg" alt="Kép">
+        <div class="uzletNev">
+            McDonalds Kecskemét - Mobiliti
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            near_me
+          </span>
+          <p style="font-size: large;">&nbspKecskemét, Izsáki út 4, 6000<br>&nbspMagyarország</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            payments
+          </span>
+          <p style="font-size: large;">&nbspFizetés szükséges<br>
+            AC: 285 HUF/kWh</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            schedule
+          </span>
+          <p style="font-size: large;">&nbspHétfő-Péntek 7:00-24:00</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; margin-bottom: 40px;" class="panelContent">
+          <span class="material-symbols-outlined">
+            info
+          </span>
+          <p style="font-size: large;">&nbspMobiliti 10131 (Parking McDonald’s)<br>
+
+            Mobiliti chargers can only be used with the mobile app<br> called "Mobiliti (NKM TöltőPont)" after entering credit card info and billing address. <br>Check the app for charger availability and more informations.<br>
+            Pricing: AC: 285 HUF/kWh</p>
+
+
+      
+      </div>
+
+
+      <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+
+          <p style="font-size: large;">Csatlakozók (1 típus)</p>
+        </div> 
+      
+        <div style="border: solid lightgray 1px; padding: 10px;" class="panelContent">
+
+          <span>
+              <div><img class="egyedi-img" src="https://assets.plugshare.com/outlets/images/type2.png" ></div>
+
+          
+          </span>
+
+          <div style="padding: 10px
+          ;" class="plug-name ng-binding"><b>Type 2</b></div>
+        
+        <span style="padding: 10px; font-size: .7em;
+        position: relative;
+        margin-left: 7px;
+        bottom: -1px;
+        color: #fff;
+        background-color: #567abb;
+        padding: 1px 5px 2px;
+        border-radius: 3px;" class="plug-name ng-binding">4 Csatlakozó</span>
+          <span style="padding: 10px; font-size: .7em;
+          position: relative;
+          margin-left: 7px;
+          bottom: -1px;
+          color: black;
+          background-color: yellow;
+          padding: 1px 5px 2px;
+          border-radius: 3px;" class="plug-name ng-binding">22 kW</span>
+
+        </div> 
+    </div>
+  
+</div>
+
+    <div id="informacioPanel4" class="informacioPanel">
+        <img src="https://photos.plugshare.com/photos/1127799.jpg" alt="Kép">
+        <div class="uzletNev">
+            Liikennevirta Oy (CPO) EON
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            near_me
+          </span>
+          <p style="font-size: large;">&nbspSoroksári út 138-142, Budapest, 1095<br>&nbspMagyarország</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            payments
+          </span>
+          <p style="font-size: large;">&nbspFizetés szükséges<br>
+            159 Ft/kWh + 4 Ft/min (az első 2 órában 0Ft percdíj)</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            schedule
+          </span>
+          <p style="font-size: large;">&nbspHétfő-Péntek 7:00-24:00</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; margin-bottom: 40px;" class="panelContent">
+          <span class="material-symbols-outlined">
+            info
+          </span>
+          <p style="font-size: large;">&nbspNincsen rendelkezésre álló információ</p>
+
+
+      
+      </div>
+
+
+      <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+
+          <p style="font-size: large;">Csatlakozók (1 típus)</p>
+        </div> 
+      
+        <div style="border: solid lightgray 1px; padding: 10px;" class="panelContent">
+
+          <span>
+              <div><img class="egyedi-img" src="https://assets.plugshare.com/outlets/images/type2.png" ></div>
+
+          
+          </span>
+
+          <div style="padding: 10px
+          ;" class="plug-name ng-binding"><b>Type 2</b></div>
+        
+        <span style="padding: 10px; font-size: .7em;
+        position: relative;
+        margin-left: 7px;
+        bottom: -1px;
+        color: #fff;
+        background-color: #567abb;
+        padding: 1px 5px 2px;
+        border-radius: 3px;" class="plug-name ng-binding">4 Csatlakozó</span>
+          <span style="padding: 10px; font-size: .7em;
+          position: relative;
+          margin-left: 7px;
+          bottom: -1px;
+          color: black;
+          background-color: yellow;
+          padding: 1px 5px 2px;
+          border-radius: 3px;" class="plug-name ng-binding">22 kW</span>
+
+        </div> 
+    </div>
+  
+</div>
+
+    <div id="informacioPanel5" class="informacioPanel">
+        <img src="https://photos.plugshare.com/photos/990454.jpg" alt="Kép">
+        <div class="uzletNev">
+            Szinvapark mélygarázs
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            near_me
+          </span>
+          <p style="font-size: large;">&nbspSzinvapark mélygarázs 2 Hadirokkantak útja<br>&nbsp 3530 MiskolcMagyarország</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            payments
+          </span>
+          <p style="font-size: large;">&nbspCsak parkolási díj szükséges<br>
+            50 forint/ 10 min</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            schedule
+          </span>
+          <p style="font-size: large;">&nbspHétfő-Péntek 7:00-24:00</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; margin-bottom: 40px;" class="panelContent">
+          <span class="material-symbols-outlined">
+            info
+          </span>
+          <p style="font-size: large;">Összesen 4 db type2 aljzat, kettő a mélygarázsban és kettő a parkolóház alsó szintjén.</p>
+
+
+      
+      </div>
+
+
+      <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+
+          <p style="font-size: large;">Csatlakozók (1 típus)</p>
+        </div> 
+      
+        <div style="border: solid lightgray 1px; padding: 10px;" class="panelContent">
+
+          <span>
+              <div><img class="egyedi-img" src="https://assets.plugshare.com/outlets/images/type2.png" ></div>
+
+          
+          </span>
+
+          <div style="padding: 10px
+          ;" class="plug-name ng-binding"><b>Type 2</b></div>
+        
+        <span style="padding: 10px; font-size: .7em;
+        position: relative;
+        margin-left: 7px;
+        bottom: -1px;
+        color: #fff;
+        background-color: #567abb;
+        padding: 1px 5px 2px;
+        border-radius: 3px;" class="plug-name ng-binding">4 Csatlakozó</span>
+          <span style="padding: 10px; font-size: .7em;
+          position: relative;
+          margin-left: 7px;
+          bottom: -1px;
+          color: black;
+          background-color: yellow;
+          padding: 1px 5px 2px;
+          border-radius: 3px;" class="plug-name ng-binding">22 kW</span>
+
+        </div> 
+    </div>
+  
+</div>
+
+    <div id="informacioPanel4" class="informacioPanel">
+        <img src="https://photos.plugshare.com/photos/1127799.jpg" alt="Kép">
+        <div class="uzletNev">
+            Liikennevirta Oy (CPO) EON
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            near_me
+          </span>
+          <p style="font-size: large;">&nbspSoroksári út 138-142, Budapest, 1095<br>&nbspMagyarország</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            payments
+          </span>
+          <p style="font-size: large;">&nbspFizetés szükséges<br>
+            159 Ft/kWh + 4 Ft/min (az első 2 órában 0Ft percdíj)</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+          <span class="material-symbols-outlined">
+            schedule
+          </span>
+          <p style="font-size: large;">&nbspHétfő-Péntek 7:00-24:00</p>
+        </div>
+        <div style="border: solid lightgray 1px; padding: 10px; margin-bottom: 40px;" class="panelContent">
+          <span class="material-symbols-outlined">
+            info
+          </span>
+          <p style="font-size: large;">&nbspNincsen rendelkezésre álló információ</p>
+
+
+      
+      </div>
+
+
+      <div style="border: solid lightgray 1px; padding: 10px; border-bottom: none;" class="panelContent">
+
+          <p style="font-size: large;">Csatlakozók (1 típus)</p>
+        </div> 
+      
+        <div style="border: solid lightgray 1px; padding: 10px;" class="panelContent">
+
+          <span>
+              <div><img class="egyedi-img" src="https://assets.plugshare.com/outlets/images/type2.png" ></div>
+
+          
+          </span>
+
+          <div style="padding: 10px
+          ;" class="plug-name ng-binding"><b>Type 2</b></div>
+        
+        <span style="padding: 10px; font-size: .7em;
+        position: relative;
+        margin-left: 7px;
+        bottom: -1px;
+        color: #fff;
+        background-color: #567abb;
+        padding: 1px 5px 2px;
+        border-radius: 3px;" class="plug-name ng-binding">4 Csatlakozó</span>
+          <span style="padding: 10px; font-size: .7em;
+          position: relative;
+          margin-left: 7px;
+          bottom: -1px;
+          color: black;
+          background-color: yellow;
+          padding: 1px 5px 2px;
+          border-radius: 3px;" class="plug-name ng-binding">22 kW</span>
+
+        </div> 
+    </div>
+  
+</div>
+
+
+
+    
+    <script>
+        maptilersdk.config.apiKey = 'yUi9bvidcF75NSipPfGA';
+        const map = new maptilersdk.Map({
+            container: 'map', 
+            style: "2756cd79-a590-44b0-ab8c-f9d40fd19aee",
+            center: [19.778369, 47.185396],
+            zoom: 7, 
+            geolocateControl: false
+        });
+
+        map.on('load', function() {
+
+            map.loadImage(
+                'https://docs.maptiler.com/sdk-js/assets/custom_marker.png',
+                function(error, image) {
+                    if (error) throw error;
+                    map.addImage('custom-marker', image);
+
+                    map.addSource('points', {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'FeatureCollection',
+                            'features': [
+                                {
+                                    'type': 'Feature',
+                                    'properties': { 'panel': 'informacioPanel1' },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [
+                                            17.265402, 46.772828
+                                        ]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': { 'panel': 'informacioPanel2' },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [
+                                            18.412897, 47.191565
+                                        ]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': { 'panel': 'informacioPanel3' },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [
+                                            19.673381, 46.899216
+                                        ]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': { 'panel': 'informacioPanel4' },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [
+                                            19.087620, 47.454160
+                                        ]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': { 'panel': 'informacioPanel5' },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [
+                                            20.792554, 48.101521
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    });
+
+                    map.addLayer({
+                        'id': 'symbols',
+                        'type': 'symbol',
+                        'source': 'points',
+                        'layout': {
+                            'icon-image': 'custom-marker'
+                        }
+                    });
+                }
+            );
+
+            map.on('click', 'symbols', function(e) {
+                var coordinates = e.features[0].geometry.coordinates;
+                var panelId = e.features[0].properties.panel;
+                map.flyTo({
+                    center: coordinates,
+                    zoom: 17
+                });
+
+                var panels = document.getElementsByClassName('informacioPanel');
+                for (var i = 0; i < panels.length; i++) {
+                    panels[i].style.left = '-400px';
+                }
+
+                document.getElementById(panelId).style.left = '0';
+            });
+
+            map.on('mouseenter', 'symbols', function() {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'symbols', function() {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+    </script>
+</body>
+</html>

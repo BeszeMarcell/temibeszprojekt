@@ -1,0 +1,40 @@
+﻿<ui:UiPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:car.Helpers"
+    xmlns:local="clr-namespace:car.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+    x:Class="car.Views.Pages.SettingsPage"
+    Title="SettingsPage"
+    d:DataContext="{d:DesignInstance {x:Type local:SettingsPage}, IsDesignTimeCreatable=False}"
+    d:DesignHeight="650"
+    d:Background="{DynamicResource ApplicationBackgroundBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d" Width="1021">
+    <Grid>
+
+
+        <Ellipse Fill="#FF5D5B" Margin="1036,10,-29,627" Cursor="Hand" Width="13" Height="13" PreviewMouseDown="Ellipse_PreviewMouseDown" Grid.ZIndex="1"/>
+        <Ellipse Fill="#00CD4E" Margin="1000,10,7,627" Cursor="Hand" Width="13" Height="13"  Grid.ZIndex="1" PreviewMouseDown="Ellipse_PreviewMouseDown_1" />
+        <Ellipse Fill="#FFBB39" Margin="1018,10,-11,627" Cursor="Hand" Width="13" Height="13"  Grid.ZIndex="1"/>
+
+        <Label x:Name="label1" Content="Pillanatnyi türelmedet kérjük..." HorizontalAlignment="Center" Margin="0,420,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Segoe UI Semibold">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="#FF25DCFF" BlurRadius="20" Opacity="1" RenderingBias="Quality" />
+            </Label.Effect>
+        </Label>
+
+        <Wpf:WebView2 Name="webView" HorizontalAlignment="Center" Height="618" VerticalAlignment="Top" Width="1078" Margin="0,32,0,0"/>
+
+        <ui:ProgressRing IsIndeterminate="True" Progress="80" Foreground="#FFFFF4F4" Margin="480,265,481,325" >
+            <ui:ProgressRing.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="#FF25DCFF" BlurRadius="20" Opacity="1" RenderingBias="Quality" />
+            </ui:ProgressRing.Effect>
+
+        </ui:ProgressRing>
+    </Grid>
+
+</ui:UiPage>
